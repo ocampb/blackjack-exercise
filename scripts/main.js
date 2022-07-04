@@ -163,15 +163,53 @@ const dealOneCard = function () {
   return newCard
 }
 
+const changePlayerCardDisplay = function () {
+  playerHandContainer.innerHTML = "";
+
+  for (let card of playerHand) {
+    const rank = card.rank
+    const suit = card.suit
+
+    const playerCard = document.createElement('img')
+
+
+    if (rank === 1) {
+      playerCard.src = `images/ace_of_${suit}.png`
+
+    } else if (rank === 11) {
+      playerCard.src = `images/jack_of_${suit}.png`
+
+    } else if (rank === 12) {
+      playerCard.src = `images/queen_of_${suit}.png`
+
+    } else if (rank === 13) {
+      playerCard.src = `images/king_of_${suit}.png`
+    }
+    else {
+      playerCard.src = `images/${rank}_of_${suit}.png`
+    }
+
+    playerHandContainer.append(playerCard)
+  }
+
+
+
+
+}
+
 dealButton.onclick = function () {
   const newCard1 = dealOneCard()
   console.log(newCard1)
   playerHand.push(newCard1)
-  changeCardDisplayPlayer0()
+  //changeCardDisplayPlayer0()
   console.log(playerHand)
   const newCard2 = dealOneCard()
   playerHand.push(newCard2)
-  changeCardDisplayPlayer1()
+  //changeCardDisplayPlayer1()
+
+  changePlayerCardDisplay()
+
+
   console.log(dealerHand)
   const newCard3 = dealOneCard()
   console.log(newCard3)
@@ -190,7 +228,8 @@ hitButton.onclick = function () {
   console.log(newCard1)
   playerHand.push(newCard1)
   console.log(playerHand)
-  changeCardDisplayPlayer3()
+  //changeCardDisplayPlayer3()
+  changePlayerCardDisplay()
 }
 
 
