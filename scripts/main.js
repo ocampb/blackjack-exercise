@@ -53,19 +53,34 @@ console.log(deck)
 
 const calculatePlayerTotal = function () {
   let sum = 0
+  let aceCheck = false
   for (let index = 0; index < playerHand.length; index++) {
+    if (playerHand[index].value === 11) {
+      aceCheck = true
+    }
     sum = sum + playerHand[index].value
   }
-  if (sum < 21 && )
+  if (aceCheck && sum >= 22) {
+    playerTotal = sum - 10
+  } else {
     playerTotal = sum
+  }
 }
 
 const calculateDealerTotal = function () {
   let sum = 0
+  let aceCheck = false
   for (let index = 0; index < dealerHand.length; index++) {
+    if (dealerHand[index].value === 11) {
+      aceCheck = true
+    }
     sum = sum + dealerHand[index].value
   }
-  dealerTotal = sum
+  if (aceCheck && sum >= 22) {
+    dealerTotal = sum - 10
+  } else {
+    dealerTotal = sum
+  }
 }
 
 //// LOGIC FOR CLICKING BUTTONS //////
