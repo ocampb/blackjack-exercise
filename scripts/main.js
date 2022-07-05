@@ -26,10 +26,15 @@ dealerPointsDisplayContainer.append(dealerStatus)
 // LOGIC TO CREATE DECK: 
 
 const makeDeck = (rank, suit) => {
+  let value = 0
+  if (rank === 1) { value = 11 }
+  else if (rank >= 10) { value = 10 }
+  else { value = rank }
   const card = {
     rank: rank,
     suit: suit,
-    value: rank > 9 ? 10 : rank
+    // value: rank > 9 ? 10 : rank
+    value: value
   }
   deck.push(card)
 }
@@ -51,7 +56,8 @@ const calculatePlayerTotal = function () {
   for (let index = 0; index < playerHand.length; index++) {
     sum = sum + playerHand[index].value
   }
-  playerTotal = sum
+  if (sum < 21 && )
+    playerTotal = sum
 }
 
 const calculateDealerTotal = function () {
